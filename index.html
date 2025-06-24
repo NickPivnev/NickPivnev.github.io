@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История Обнинска - первый город атомной энергетики</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+        }
+        header {
+            background-color: #1a3e72;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        nav {
+            background-color: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        nav ul {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        nav a {
+            text-decoration: none;
+            color: #1a3e72;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+        nav a:hover {
+            background-color: #1a3e72;
+            color: white;
+            border-radius: 3px;
+        }
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://example.com/obninsk-aes.jpg');
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        .hero h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #1a3e72;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #1a3e72;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #f1f1f1;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #f1f1f1;
+        }
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #f1f1f1;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #f1f1f1 transparent transparent;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .content {
+            padding: 20px;
+            background-color: #f1f1f1;
+            position: relative;
+            border-radius: 6px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a3e72;
+            color: white;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .container::before {
+                left: 60px;
+                border: medium solid #f1f1f1;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #f1f1f1 transparent transparent;
+            }
+            .left::after, .right::after {
+                left: 15px;
+            }
+            .right {
+                left: 0%;
+            }
+            .container::after {
+                left: 15px;
+            }
+        }
+        .quiz-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+        .video-container {
+            background: #eee;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+        .video-button {
+            background-color: #1a3e72;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .video-button:hover {
+            background-color: #0d2b56;
+        }
+        .sources {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        .sources h2 {
+            margin-top: 0;
+        }
+        .sources ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>История города Обнинска</h1>
+        <p>Первый наукоград России - родина мирного атома</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#history">История города</a></li>
+            <li><a href="#aes">Обнинская АЭС</a></li>
+            <li><a href="#timeline">Хронология</a></li>
+            <li><a href="#gallery">Фотогалерея</a></li>
+            <li><a href="#memorials">Достопримечательности</a></li>
+            <li><a href="#quiz">Викторина</a></li>
+            <li><a href="#video">Видео</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>27 июня 1954 года - день рождения мирного атома</h1>
+    </div>
+
+    <section id="history" class="card">
+        <h2>История города</h2>
+        <p>История Обнинска уходит корнями в глубокую древность. Археологические находки свидетельствуют, что первые поселения на этой территории появились ещё в эпоху неолита. В средние века здесь находились вотчины бояр Обнинских, от фамилии которых и произошло название города.</p>
+        
+        <h3>Военные годы и послевоенное становление</h3>
+        <p>Согласно исследованиям Черных В.А., в годы Великой Отечественной войны территория будущего Обнинска оказалась в прифронтовой зоне. Здесь располагались:</p>
+        <ul>
+            <li>Военные госпитали</li>
+            <li>Склады боеприпасов</li>
+            <li>Пункты формирования воинских частей</li>
+        </ul>
+        
+        <p>После освобождения территории от немецко-фашистских захватчиков в 1942 году началось восстановление разрушенного хозяйства. Уже в 1943 году возобновила работу школа-колония "Бодрая жизнь", хотя в значительно сокращённом составе.</p>
+        
+        <h3>Создание научного центра</h3>
+        <p>Как отмечает Черных В.А., выбор места для создания секретного объекта "В" (будущего ФЭИ) в 1946 году был обусловлен:</p>
+        <ol>
+            <li>Близостью к Москве (около 100 км)</li>
+            <li>Наличием сохранившейся инфраструктуры</li>
+            <li>Удобным транспортным сообщением</li>
+            <li>Относительной удалённостью от крупных населённых пунктов</li>
+        </ol>
+        
+        <p>Первые годы работы объекта "В" (1946-1949) были особенно тяжёлыми. Учёные и строители жили в бараках, не хватало оборудования и материалов. Тем не менее, уже к 1949 году были достигнуты первые значительные результаты в исследованиях ядерных процессов.</p>
+
+        <h3>Становление города</h3>
+        <p>По данным Гавриловой Р.А., к 1951 году посёлок при объекте "В" насчитывал уже около 3 тысяч жителей. Были построены:</p>
+        <ul>
+            <li>Первые капитальные жилые дома</li>
+            <li>Школа</li>
+            <li>Поликлиника</li>
+            <li>Дом культуры</li>
+        </ul>
+        
+        <p>24 июля 1956 года Указом Президиума Верховного Совета РСФСР рабочий посёлок Обнинск получил статус города. Это был первый в СССР город, возникший как научный центр, а не как промышленный или административный.</p>
+    </section>
+
+    <section id="aes" class="card">
+        <h2>Обнинская АЭС - первая в мире</h2>
+        <p>Как подробно описывает Черных В.А., строительство первой АЭС велось в условиях строжайшей секретности. Даже многие работники объекта не знали истинного назначения возводимых сооружений.</p>
+        
+        <h3>Технические особенности</h3>
+        <p>Согласно архивным данным, приведённым в работе Черных В.А.:</p>
+        <ul>
+            <li>Реактор АМ-1 (Атом Мирный) имел тепловую мощность 30 МВт</li>
+            <li>Электрическая мощность составляла 5 МВт</li>
+            <li>В качестве теплоносителя использовалась вода под давлением</li>
+            <li>Замедлителем нейтронов служил графит</li>
+        </ul>
+        
+        <p>Интересный факт: первоначально станция обозначалась как "Объект "АМ", а название "Обнинская АЭС" появилось только в 1956 году.</p>
+        
+        <h3>Пуск и эксплуатация</h3>
+        <p>17 мая 1954 года в реактор были загружены первые топливные элементы. 27 июня 1954 года в 17:45 станция была официально запущена.</p>
+        <blockquote>"Ну, что ж, с легким паром!" - сказал Курчатов при запуске станции.</blockquote>
+        
+        <p>Гаврилова Р.А. отмечает, что первые годы эксплуатации станции были посвящены не столько выработке электроэнергии, сколько исследовательской работе:</p>
+        <ul>
+            <li>Изучение радиационной безопасности</li>
+            <li>Разработка новых типов топлива</li>
+            <li>Подготовка кадров для атомной энергетики</li>
+        </ul>
+        
+        <h3>Значение и наследие</h3>
+        <p>Обнинская АЭС проработала 48 лет и была остановлена 29 апреля 2002 года. Сегодня в здании находится музей, который, по данным Гавриловой Р.А., ежегодно посещают более 10 тысяч человек.</p>
+    </section>
+
+    <section id="timeline" class="card">
+        <h2>Хронология важных событий</h2>
+        <div class="timeline">
+            <div class="container left">
+                <div class="content">
+                    <h3>1840</h3>
+                    <p>Основание села Самсоново на территории будущего Обнинска</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h3>1911</h3>
+                    <p>Создание школы-колонии «Бодрая жизнь» С.Т. Шацким</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h3>1942</h3>
+                    <p>Освобождение территории от немецко-фашистских захватчиков</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h3>1946</h3>
+                    <p>Создание секретной Лаборатории "В" (будущий ФЭИ)</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h3>27 июня 1954</h3>
+                    <p>Пуск первой в мире атомной электростанции</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h3>1956</h3>
+                    <p>Обнинск получает статус города</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h3>2000</h3>
+                    <p>Присвоение статуса первого наукограда России</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h3>2002</h3>
+                    <p>Остановка Обнинской АЭС после 48 лет работы</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h3>2016</h3>
+                    <p>Открытие памятника «Первопроходцам атомной энергетики»</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="card">
+        <h2>Фотогалерея</h2>
+        <div class="gallery">
+            <img src="https://avatars.mds.yandex.net/get-entity_search/5504037/931019008/S600xU_2x" alt="Игорь Курчатов">
+            <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6745b8a7cfb69a71097715b4_6745b8b2cfb69a710977167f/scale_1200" alt="Музей АЭС сегодня">
+            <img src="https://quto.ru/thumb/1720x0/filters:quality(75):no_upscale()/imgs/2023/12/18/12/6277682/639a7ccc1e4dfe8865cb40d874acc91881297ea9.jpg" alt="Памятник первопроходцам">
+            <img src="https://quto.ru/thumb/1720x0/filters:quality(75):no_upscale()/imgs/2023/12/18/13/6277733/1188753b33c3b2c3b6bf7d937f2ed0885266c70c.jpg" alt="Памятник подводникам">
+            <img src="https://quto.ru/thumb/1720x0/filters:quality(75):no_upscale()/imgs/2023/12/18/13/6277742/d0f4bbd47dde611e072e3a27ae3545a7ada0a0aa.jpg" alt="Усадьба Белкино">
+            <img src="https://a.d-cd.net/f2e83eas-960.jpg" alt="Современный Обнинск">
+        </div>
+    </section>
+
+    <section id="memorials" class="card">
+        <h2>Достопримечательности Обнинска</h2>
+        <div>
+            <h3>Памятник «Первопроходцам атомной энергетики»</h3>
+            <p>Торжественно открыт 14 июля 2016 года на Треугольной площади. Авторы — скульпторы Алексей Дубин и Владимир Сапрыкин. Памятник изображает И.В. Курчатова и группу учёных, стоящих у пульта управления атомной станцией.</p>
+        </div>
+        <div>
+            <h3>Памятник первопроходцам атомного подводного флота</h3>
+            <p>Установлен в 2008 году на улице Победы. В основе монумента — рубка подлодки К-14, которая находилась в боевом составе ВМФ 32 года. Памятник символизирует вклад обнинских учёных в создание атомного подводного флота СССР.</p>
+        </div>
+        <div>
+            <h3>Усадьба Белкино</h3>
+            <p>Историческая усадьба в окрестностях Обнинска с богатой историей, связанной с семьей Обнинских. Архитектурный ансамбль включает в себя главный дом в стиле классицизма, церковь Бориса и Глеба (1773 г.) и живописный парк с каскадом прудов.</p>
+        </div>
+        <div>
+            <h3>Метеомачта</h3>
+            <p>310-метровая метеорологическая мачта, построенная в 1958 году. Долгое время была самым высоким сооружением в Европе. Используется для изучения атмосферных процессов и радиационного фона.</p>
+        </div>
+    </section>
+
+    <section id="quiz" class="card quiz-container">
+        <h2>Викторина по истории Обнинска</h2>
+        <div class="quiz-question">
+            <h3>1. В каком году был присвоен статус наукограда?</h3>
+            <input type="radio" id="q1a" name="q1" value="a">
+            <label for="q1a">1995</label><br>
+            <input type="radio" id="q1b" name="q1" value="b">
+            <label for="q1b">2000</label><br>
+            <input type="radio" id="q1c" name="q1" value="c">
+            <label for="q1c">2005</label>
+        </div>
+        <div class="quiz-question">
+            <h3>2. Как называлась школа-колония, существовавшая на месте Обнинска?</h3>
+            <input type="radio" id="q2a" name="q2" value="a">
+            <label for="q2a">"Светлое будущее"</label><br>
+            <input type="radio" id="q2b" name="q2" value="b">
+            <label for="q2b">"Бодрая жизнь"</label><br>
+            <input type="radio" id="q2c" name="q2" value="c">
+            <label for="q2c">"Новая заря"</label>
+        </div>
+        <div class="quiz-question">
+            <h3>3. Какова высота метеомачты в Обнинске?</h3>
+            <input type="radio" id="q3a" name="q3" value="a">
+            <label for="q3a">210 метров</label><br>
+            <input type="radio" id="q3b" name="q3" value="b">
+            <label for="q3b">310 метров</label><br>
+            <input type="radio" id="q3c" name="q3" value="c">
+            <label for="q3c">410 метров</label>
+        </div>
+        <button onclick="checkQuiz()">Проверить ответы</button>
+    </section>
+
+    <section id="video" class="card">
+        <h2>Видеоматериалы</h2>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+            <div>
+                <h3>Документальный фильм о пуске АЭС</h3>
+                <div class="video-container">
+                    <p>Архивные кадры запуска первой в мире атомной электростанции</p>
+                    <a href="https://yandex.ru/video/preview/7864518215827329626" class="video-button" target="_blank">Смотреть на Яндекс.Видео</a>
+                </div>
+            </div>
+            <div>
+                <h3>Виртуальная экскурсия по музею АЭС</h3>
+                <div class="video-container">
+                    <p>Экскурсия по первой атомной станции</p>
+                    <a href="https://rutube.ru/video/b3f55651f00c021807c0cce89d85d7de/" class="video-button" target="_blank">Смотреть на Rutube</a>
+                </div>
+            </div>
+            <div>
+                <h3>Современный Обнинск с высоты</h3>
+                <div class="video-container">
+                    <p>Аэросъёмка города сегодня</p>
+                    <a href="https://vkvideo.ru/video-94368181_456240234" class="video-button" target="_blank">Смотреть в VK</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sources">
+        <h2>Источники</h2>
+        <ul>
+            <li>Гаврилова, Р.А. История становления Обнинска. 1940–1960-е гг. / Р.А. Гаврилова : ред. А. А. Кащеева [и др.]; Музей истории г. Обнинска. – Калининград : Акслос, 2019. – 176 с.: ил. – 1000 экз. - ISBN 978-5-91726-065-5</li>
+            <li>Черных, В.А. Обнинск: Книга очерков о городе науки / В.А. Черных. — Тула: Приокское книжное издательство, 1978.</li>
+            <li>Официальный сайт города Обнинска. — URL: http://www.admobninsk.ru (дата обращения: 01.06.2023)</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>© 2023 История Обнинска</p>
+        <p>Авторы материалов: Пивнев Н.Ю., Хорошевский Б.А., Кирилин Н.Р.</p>
+    </footer>
+
+    <script>
+        function checkQuiz() {
+            let score = 0;
+            
+            // Проверка первого вопроса
+            if (document.getElementById('q1b').checked) score++;
+            
+            // Проверка второго вопроса
+            if (document.getElementById('q2b').checked) score++;
+            
+            // Проверка третьего вопроса
+            if (document.getElementById('q3b').checked) score++;
+            
+            alert(`Вы ответили правильно на ${score} из 3 вопросов!`);
+        }
+    </script>
+</body>
+</html>
